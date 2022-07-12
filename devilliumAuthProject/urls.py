@@ -18,10 +18,16 @@ from django.urls                    import path
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from devilliumAuthApp               import views
 
-urlpatterns = [ #Creación de endpoints
-    path('login/',         TokenObtainPairView.as_view()), #Por defecto
-    path('refresh/',       TokenRefreshView.as_view()), #Por defecto
+# Endpoints path
+urlpatterns = [ 
+    # Login endpoint
+    path('login/',         TokenObtainPairView.as_view()), 
+    # Token refresh endpoint
+    path('refresh/',       TokenRefreshView.as_view()),
+    # User Login endpoint
     path('user/',          views.UserCreateView.as_view()), 
+    # User detail info endpoint
     path('user/<int:pk>/', views.UserDetailView.as_view()), 
+    # Token veification endpoint
     path('verifyToken/', views.VerifyTokenView.as_view()),
 ]
